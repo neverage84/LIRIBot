@@ -1,6 +1,15 @@
 var axios = require("axios");
 var inquirer = require("inquirer");
 
+var task = process.argv[2];
+var lookUp = process.argv.slice(3).toString().replace(/,/g, " ");
+
+
+
+console.log(task);
+console.log(lookUp);
+
+
 inquirer
 .prompt([
   // Here we create a basic text prompt.

@@ -5,28 +5,20 @@ var task = process.argv[2];
 var lookUp = process.argv.slice(3).toString().replace(/,/g, " ");
 
 
-
-console.log(task);
-console.log(lookUp);
-
-
-inquirer
-.prompt([
-  // Here we create a basic text prompt.
-  {
-    type: "input",
-    message: "What band are you searching for?",
-    
-    name: "Band"
-  }
-])
-.then(function(inquirerResponse) {
-  // If the inquirerResponse confirms, we displays the inquirerResponse's username and pokemon from the answers.
-  
+switch (task) {
+  case "concert-this":
+    ConcertThis();
 
 
-// Then run a request with axios to the OMDB API with the movie specified
-axios.get("https://rest.bandsintown.com/artists/" + inquirerResponse.Band + "/events?app_id=codingbootcamp").then(
+  default:
+    console.log("That is not a valid command");
+}
+
+
+
+
+function ConcertThis(){
+axios.get("https://rest.bandsintown.com/artists/" + lookUp + "/events?app_id=codingbootcamp").then(
   function(response) {
 
     for (var i = 0; i < 9; i++){
@@ -59,6 +51,4 @@ axios.get("https://rest.bandsintown.com/artists/" + inquirerResponse.Band + "/ev
     console.log(error.config);
   });
 
-
-
-});
+}

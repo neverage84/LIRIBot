@@ -1,5 +1,6 @@
 var axios = require("axios");
-var inquirer = require("inquirer");
+var moment = require('moment');
+
 
 var task = process.argv[2];
 var lookUp = process.argv.slice(3).toString().replace(/,/g, " ");
@@ -22,10 +23,14 @@ axios.get("https://rest.bandsintown.com/artists/" + lookUp + "/events?app_id=cod
   function(response) {
 
     for (var i = 0; i < 9; i++){
+
+    var date = moment(response.data[i].datetime.toString(), moment.ISO_8601);
+    var formattedDate = date.format("MM/DD/YYYY");
+
     console.log("+------------------------------------------");
     console.log( "Venue Name: " + response.data[i].venue.name);
     console.log("Venue City: " + response.data[i].venue.city);
-    console.log("Venue Date: " + response.data[i].datetime);
+    console.log("Venue Date: " + formattedDate);
     console.log("+------------------------------------------");
 
     }

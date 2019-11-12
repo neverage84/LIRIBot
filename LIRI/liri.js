@@ -3,24 +3,30 @@ require("dotenv").config();
 var axios = require("axios");
 var moment = require('moment');
 var keys = require("./keys");
-var Spotify = require('node-spotify-api');
+//var Spotify = require('node-spotify-api');
+var http = require('http');
+var fs = require('fs');
 
 
 
 var task = process.argv[2];
 var lookUp = process.argv.slice(3).toString().replace(/,/g, " ");
 
+if (task === "concert-this" ){
+  ConcertThis();
+}
+else if (task === "spotify-this-song"){
+  runSpotify();
+}
+else if (task === "movie-this"){
+  runMovie();
+}
+else if (task === "do-what-it-says"){
+   doIt();
+}
 
-switch (task) {
-  case "concert-this":
-    ConcertThis();
-
-  case "spotify-this-song":
-    runSpotify();
-
-  case "movie-this":
-    runMovie();
-
+else {
+  console.log("Wrong input");
 }
 
 
@@ -67,16 +73,16 @@ axios.get("https://rest.bandsintown.com/artists/" + lookUp + "/events?app_id=cod
 }
 
 function runSpotify(){
-  var spotify = new Spotify(keys.spotify);
-  console.log(spotify);
+  //var spotify = new Spotify(keys.spotify);
+  //console.log(spotify);
   
-  spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
-    if (err) {
-      return console.log('Error occurred: ' + err);
-    }
+  //spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+    //if (err) {
+     // return console.log('Error occurred: ' + err);
+   // }
    
-  console.log(data); 
-  });
+  //console.log(data); 
+  //});
 
 }
 
@@ -153,4 +159,24 @@ axios.get(queryUrl).then(
     console.log(error.config);
   });
 }
+}
+
+function doIt(){
+  fs.readFile("random.txt", "utf8", function(error, data) {
+
+    // If the code experiences any errors it will log the error to the console.
+    if (error) {
+      return console.log(error);
+    }
+  
+    // We will then print the contents of data
+    console.log(data);
+  
+    // Then split it by commas (to make it more readable)
+    var dataArr = data.split(",");
+  
+    // We will then re-display the content as an array for later use.
+    console.log(dataArr);
+  
+  });
 }

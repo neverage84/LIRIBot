@@ -1,5 +1,9 @@
+ var env = require("dotenv").config();
+
 var axios = require("axios");
 var moment = require('moment');
+var keys = require("./keys");
+
 
 
 var task = process.argv[2];
@@ -9,6 +13,9 @@ var lookUp = process.argv.slice(3).toString().replace(/,/g, " ");
 switch (task) {
   case "concert-this":
     ConcertThis();
+
+  case "spotify-this-song":
+    runSpotify();
 
 
   default:
@@ -56,4 +63,9 @@ axios.get("https://rest.bandsintown.com/artists/" + lookUp + "/events?app_id=cod
     console.log(error.config);
   });
 
+}
+
+function runSpotify(){
+  var spotify = new Spotify(keys.spotify);
+  console.log(spotify);
 }

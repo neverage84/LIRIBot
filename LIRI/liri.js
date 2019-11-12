@@ -7,6 +7,7 @@ inquirer
   {
     type: "input",
     message: "What band are you searching for?",
+    
     name: "Band"
   }
 ])

@@ -2,10 +2,13 @@ require("dotenv").config();
 
 var axios = require("axios");
 var moment = require('moment');
-var keys = require("./keys");
+var keys = require("./keys.js");
 //var Spotify = require('node-spotify-api');
 var http = require('http');
 var fs = require('fs');
+const Spotify = require("node-spotify-api");
+
+const spotify = new Spotify(keys.spotify);
 
 
 
@@ -73,16 +76,15 @@ axios.get("https://rest.bandsintown.com/artists/" + lookUp + "/events?app_id=cod
 }
 
 function runSpotify(){
-  //var spotify = new Spotify(keys.spotify);
-  //console.log(spotify);
   
-  //spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
-    //if (err) {
-     // return console.log('Error occurred: ' + err);
-   // }
+  
+  spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+    if (err) {
+     return console.log('Error occurred: ' + err);
+   }
    
-  //console.log(data); 
-  //});
+  console.log(data.tracks.items[0].album.name); 
+  });
 
 }
 

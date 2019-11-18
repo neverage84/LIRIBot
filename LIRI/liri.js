@@ -12,9 +12,13 @@ const spotify = new Spotify(keys.spotify);
 
 
 
+
 var task = process.argv[2];
 var lookUp = process.argv.slice(3).toString().replace(/,/g, " ");
 
+RunProgram();
+
+function RunProgram(){
 if (task === "concert-this" ){
   ConcertThis();
 }
@@ -30,6 +34,8 @@ else if (task === "do-what-it-says"){
 
 else {
   console.log("Wrong input");
+}
+
 }
 
 
@@ -78,7 +84,7 @@ axios.get("https://rest.bandsintown.com/artists/" + lookUp + "/events?app_id=cod
 function runSpotify(){
   
   
-  spotify.search({ type: 'track', query: 'All the Small Things' }, function(err, data) {
+  spotify.search({ type: 'track', query: lookUp }, function(err, data) {
     if (err) {
      return console.log('Error occurred: ' + err);
    }

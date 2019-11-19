@@ -35,7 +35,9 @@ https://rest.bandsintown.com/artists/celine+dion/events?app_id=codingbootcamp
 
 
 
-node liri.js spotify-this-song '<song name here>'
+node liri.js 
+spotify-this-song '<song name here>'
+![image](https://user-images.githubusercontent.com/49047459/69105240-89c6ea00-0a1f-11ea-9559-13296cbcf745.png)
 
 
 

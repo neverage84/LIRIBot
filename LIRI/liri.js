@@ -1,5 +1,6 @@
 require("dotenv").config();
 
+const cTable = require('console.table');
 var axios = require("axios");
 var moment = require('moment');
 var keys = require("./keys.js");
@@ -82,15 +83,37 @@ axios.get("https://rest.bandsintown.com/artists/" + lookUp + "/events?app_id=cod
 }
 
 function runSpotify(){
+  if (lookUp === ""){
+    spotify.search({ type: 'track', query: "The Sign Ace of Base" }, function(err, data) {
+      if (err) {
+       return console.log('Error occurred: ' + err);
+     }
+     console.table([
+      {"Artist(s)": data.tracks.items[0].album.artists[0].name},
+      {Song: data.tracks.items[0].name}, 
+      {Preview_Link: data.tracks.items[0].preview_url},
+      {Album: data.tracks.items[0].album.name}
+    ]);
+
+    });
+  }
   
-  
+else{
+
+
   spotify.search({ type: 'track', query: lookUp }, function(err, data) {
     if (err) {
      return console.log('Error occurred: ' + err);
    }
    
-  console.log(data.tracks.items[0].album.name); 
+  console.table([
+  {"Artist(s)": data.tracks.items[0].album.artists[0].name},
+  {Song: data.tracks.items[0].name}, 
+  {Preview_Link: data.tracks.items[0].preview_url},
+  {Album: data.tracks.items[0].album.name}
+]);
   });
+}
 
 }
 

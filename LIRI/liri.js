@@ -46,18 +46,30 @@ function ConcertThis(){
 axios.get("https://rest.bandsintown.com/artists/" + lookUp + "/events?app_id=codingbootcamp").then(
   function(response) {
 
-    for (var i = 0; i < 9; i++){
+    ConcertArr = [];
 
+  
+
+    for (var i = 0; i < 21; i++){
+
+    
     var date = moment(response.data[i].datetime.toString(), moment.ISO_8601);
     var formattedDate = date.format("MM/DD/YYYY");
 
-    console.log("+------------------------------------------");
-    console.log( "Venue Name: " + response.data[i].venue.name);
-    console.log("Venue City: " + response.data[i].venue.city);
-    console.log("Venue Date: " + formattedDate);
-    console.log("+------------------------------------------");
-
+    // console.log("+------------------------------------------");
+    // console.log( "Venue Name: " + response.data[i].venue.name);
+    // console.log("Venue City: " + response.data[i].venue.city);
+    // console.log("Venue Date: " + formattedDate);
+    // console.log("+------------------------------------------");
+      ConcertArr.push(
+        { "Venue Name": response.data[i].venue.name,
+          "Venue City": response.data[i].venue.city, 
+          "Venue Date": formattedDate
+      });
+      
     }
+    // console.log(ConcertArr);
+    console.table(ConcertArr);
   })
   .catch(function(error) {
     if (error.response) {

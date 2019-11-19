@@ -93,6 +93,9 @@ You'll use the axios package to retrieve data from the OMDB API. Like all of the
 node liri.js do-what-it-says
 
 
+![image](https://user-images.githubusercontent.com/49047459/69109444-a4ec2680-0a2c-11ea-81e6-1b3dbfb8966f.png)
+
+
 
 
 Using the fs Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands.
@@ -100,16 +103,5 @@ Using the fs Node package, LIRI will take the text inside of random.txt and then
 
 It should run spotify-this-song for "I Want it That Way," as follows the text in random.txt.
 Edit the text in random.txt to test out the feature for movie-this and concert-this.
-
-![image](https://user-images.githubusercontent.com/49047459/69109444-a4ec2680-0a2c-11ea-81e6-1b3dbfb8966f.png)
-
-
-
-
-![image](https://user-images.githubusercontent.com/49047459/68815510-7935fe80-0630-11ea-9b99-dd952b6fc1ca.png)
-
-![image](https://user-images.githubusercontent.com/49047459/68815724-0c6f3400-0631-11ea-8c2a-f699497aa542.png)
-
-
 
 

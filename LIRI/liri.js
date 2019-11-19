@@ -207,7 +207,9 @@ function doIt(){
     var dataArr = data.split(",");
   
     // We will then re-display the content as an array for later use.
-    console.log(dataArr);
+     task = dataArr[0];
+    lookUp = dataArr[1];
+    RunProgram();
   
   });
 }

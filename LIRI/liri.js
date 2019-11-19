@@ -134,6 +134,8 @@ function runMovie(){
 // Then run a request with axios to the OMDB API with the movie specified
 var queryUrl = "http://www.omdbapi.com/?t=" + lookUp + "&y=&plot=short&apikey=trilogy";
 var defaultUrl = "http://www.omdbapi.com/?t=Mr+Nobody&y=&plot=short&apikey=trilogy"
+
+
 if (lookUp === ""){
   axios.get(defaultUrl).then(
     function(response) {
@@ -145,6 +147,8 @@ if (lookUp === ""){
     console.log("Movie Language: " + response.data.Language);
     console.log("Plot: " + response.data.Plot);
     console.log("Actors: " + response.data.Actors);
+
+    
   })
   .catch(function(error) {
     if (error.response) {

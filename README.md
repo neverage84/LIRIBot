@@ -62,7 +62,7 @@ Step Four: On the next screen, scroll down to where you see your client id and c
 
 
 node liri.js movie-this '<movie name here>'
-
+![image](https://user-images.githubusercontent.com/49047459/69111819-91908980-0a33-11ea-8e63-78fff31ce493.png)
 
 
 
